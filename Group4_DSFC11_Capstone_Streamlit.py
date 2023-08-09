@@ -6,7 +6,7 @@ data = pd.read_csv('df_final_withproba_noskip.csv')
 with open("model_rh.pkl", "rb") as f:
     model = pickle.load(f)
 # Set the page title and icon
-st.set_page_config(page_title="Capstone - Player Retention in the Gaming Realm", page_icon=":smiley:", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="My Streamlit App", page_icon=":smiley:", layout="wide", initial_sidebar_state="expanded")
 
 
 # Define a dictionary with page names and content
@@ -27,8 +27,8 @@ PAGES = {
     "retention": "streamlit/retention.png",
     "retention_text": "This flowchart shows the stages players go through when playing the game. This is important\
     to understand to give developers an idea on player behavior.\n\n\
-    - Owned - after gaining interest, players would buy the game upon release\n\
     - To Play - players have bought the game but are yet to play it\n\
+    - Owned - after gaining interest, players would buy the game upon release\n\
     - Playing - currently playing the game\n\
     - Dropped - stopped playing the game without finishing it\n\
     - Finished - completed all stages of the game",
@@ -65,7 +65,7 @@ PAGES = {
         "conc_4": "streamlit/conc_4.png",
     },
 
-    "Model Depolyment": {
+    "Model Deployment": {
         "predict": "Predict the School Type"
     },
 
@@ -116,7 +116,9 @@ elif page == "Methodology":
 
     
 elif page == "Machine Learning Model":
+    
     st.write("<h1 style='font-weight: bold'>{}</h1>".format("{}".format(PAGES[page]["pipeline_title"])), unsafe_allow_html=True)
+    st.write("After training the data on 8 different models and various under- and oversampling methods, Gradient Boosting Classification emerged as the best model.")
     st.image(PAGES[page]["conf_matrix"], width=1000)
 
     st.write("To understand the behavior of the model, feature importance plots based on SHAPley values were generated.")
@@ -140,13 +142,12 @@ elif page == "Machine Learning Model":
 elif page == "Conclusions":
     st.markdown("<h2 style='font-weight: lighter; font-size: 30px;'>After analyzing the model and its feature importance plots, the following conclusions and recommendations were drawn for each identified key feature.</h2>", unsafe_allow_html=True)
     st.image(PAGES[page]["conc_1"], width=1000)
-    st.image(PAGES[page]["conc_3"], width=1000)
     st.image(PAGES[page]["conc_2"], width=1000)
+    st.image(PAGES[page]["conc_3"], width=1000)
     st.image(PAGES[page]["conc_4"], width=1000)
 
-elif page == "Model Depolyment":
-    st.title("Game Retention Rate Predicion Model")
-    st.subheader("we're graduating yey")
+elif page == "Model Deployment":
+    st.title("Game Retention Rate Prediction Model")
 
     with st.form("New Input"):
         input_data = {}
